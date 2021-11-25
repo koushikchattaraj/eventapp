@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <head>
+{% block title %}
+<title>
+    Love Calculator
+</title>
+{% endblock %}
+</head>
+<!-- Your Html -->
+<div  id="calculator">
+<h1>New Year Wish</h1>
+</div>
+
+<div class="textare" >
+    <form action="" method="POST">
+        {% csrf_token %}
+    <div class="container bg-light">
+        <input type="text" class="form-control mt-2" id="name" name="name" required aria-describedby="name" placeholder="Enter your name">
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary mb-2 mt-2 mr-2 ml-2" id="wish_btn">Wish your friends</button>
+        </div>
+</form>
+
+</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$("#wish_btn").click(function(){
+    wish_by = $("#name").val()
+    if(wish_by!=""){
+    link = "https://www.127.0.0.1:8000/event"
+    msg = `Hi friends here your new year gift ${link}`
+    window.location.href = `whatsapp://send?text=${msg}`;
+    }
+    
+});
+</script>
+
+{% endblock %}
